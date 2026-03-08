@@ -1,5 +1,19 @@
 # SKILL.md — Ralph Loop
 
+## Note
+
+This is a **generic Ralph Loop skill for OpenClaw**.
+
+It is about the pattern:
+- how a tiny supervisor talks to the Gateway,
+- how it lists workers,
+- how it starts workers,
+- how it stops stale workers,
+- how it logs status,
+- how it keeps a target amount of work running.
+
+It is not specific to one workflow. Any product-specific flow should be treated as an example only.
+
 ## What This Is
 
 A **Ralph Loop** is a tiny background supervisor that keeps some target number of agents/jobs alive.
@@ -54,6 +68,18 @@ Use this when you need:
 - dedicated worker label prefix
 - append-only log file
 - tail log for status
+- Gateway-based worker control (`list` / `spawn` / `kill`)
+
+## Generic OpenClaw Core
+
+The reusable core of a Ralph Loop in OpenClaw is:
+1. talk to the Gateway
+2. list workers
+3. start missing workers
+4. stop stale workers
+5. log status
+
+That is the generic pattern. Specific workflows are examples layered on top.
 
 ## Bad Pattern
 
